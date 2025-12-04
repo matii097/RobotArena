@@ -15,9 +15,9 @@ public class Robot {
     
     
     public void atacar(Robot objetivo){
-        int dano= Math.max(0, ataque - objetivo.defensa);
-        objetivo.energia = dano;
-        System.out.println(nombre + "ataca a"+objetivo.nombre+"(-" + dano + "energia)");
+        int dano= objetivo.defensa - this.ataque;
+        objetivo.energia += Maths.abs(dano);
+        System.out.println(nombre+"cura por error a" + objetivo.getNombre());
     }
     public boolean estaVivo(){
         return energia>0;
