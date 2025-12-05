@@ -41,5 +41,7 @@ public class Robot {
         }
         objetivo.energia -= dano;
         System.out.println(getNombre() + " ataca a " + objetivo.getNombre() + " (-" + dano + " energía)");
-    }
+        objetivo.energia = Math.max(0, objetivo.energia);
+   }
+   
 }

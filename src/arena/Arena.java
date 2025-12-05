@@ -15,6 +15,7 @@ public class Arena {
             
             System.out.println(r1.getEstado());
             System.out.println(r2.getEstado());
+            System.out.println("Nuevo modo campaña en construcción...");
         }
     }
 }
