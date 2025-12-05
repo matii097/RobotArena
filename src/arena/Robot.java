@@ -1,6 +1,7 @@
 package arena;
 
 public class Robot {
+
     private String nombre;
     private int energia;
     private int ataque;
@@ -12,22 +13,22 @@ public class Robot {
         this.ataque = ataque;
         this.defensa = defensa;
     }
-    
-    
-    public void atacar(Robot objetivo){
-        int dano= objetivo.defensa - this.ataque;
-        objetivo.energia += Maths.abs(dano);
-        System.out.println(nombre+"cura por error a" + objetivo.getNombre());
+
+    public boolean estaVivo() {
+        return energia > 0;
     }
-    public boolean estaVivo(){
-        return energia>0;
+
+    public String getEstado() {
+        return nombre + "[Energia:" + energia + "]";
     }
-    
-     public String getEstado() {
-         return nombre+"[Energia:"+ energia +"]";
-     }
+
     public String getNombre() {
         return nombre;
     }
-    
+
+    public void atacar(Robot objetivo) {
+        int dano = (ataque * 2) - objetivo.defensa; // cambio incompatible
+        objetivo.energia -= dano;
+        System.out.println(nombre + " realiza un ataque doble!");
+    }
 }
