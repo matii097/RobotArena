@@ -25,10 +25,21 @@ public class Robot {
     public String getNombre() {
         return nombre;
     }
+    private boolean escudoActivo = false;
+
+    public void activarEscudo() {
+        escudoActivo = true;
+        System.out.println(getNombre() + " activa un ESCUDO durante 1 ataque.");
+    }
 
     public void atacar(Robot objetivo) {
-        int dano = (ataque * 2) - objetivo.defensa; // cambio incompatible
+        int dano = Math.max(0, ataque - objetivo.defensa);
+        if (objetivo.escudoActivo) {
+            dano /= 2;
+            objetivo.escudoActivo = false;
+            System.out.println(objetivo.getNombre() + " recibe daño reducido por ESCUDO!");
+        }
         objetivo.energia -= dano;
-        System.out.println(nombre + " realiza un ataque doble!");
+        System.out.println(getNombre() + " ataca a " + objetivo.getNombre() + " (-" + dano + " energía)");
     }
 }
